@@ -4,11 +4,13 @@ package tetriscolors;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 
 public class wnd {
     //--------Declaracion de variables----------
     JFrame window;
     JPanel panel;
+    JLabel greet;
   //----------Create Contructor----------------
     public wnd(){
         createP();
@@ -29,6 +31,7 @@ public class wnd {
      public void createP(){
          panel=new JPanel();
          panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
-     
+         greet =new JLabel("Bienvenido");
+         panel.add(greet);
      }
 }
