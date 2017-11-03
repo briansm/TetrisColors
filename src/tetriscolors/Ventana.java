@@ -5,10 +5,18 @@
  */
 package tetriscolors;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Juan José
  */
-public class Ventana {
+public class Ventana  extends JFrame {
     
+    public Ventana(){
+    
+        this.setBounds(0, 0, 500, 500);
+    
+    }
+ 
 }
