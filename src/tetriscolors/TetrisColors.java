@@ -15,7 +15,11 @@ public class TetrisColors {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       wnd window1=new wnd();
+        Ventana ventana = new Ventana(); //llamar a clase Ventana
+        ventana.setVisible(true); // sea visible Jframe
+        ventana.setDefaultCloseOperation(Ventana.EXIT_ON_CLOSE);
+        ventana.setLocationRelativeTo(null);
+        
        
     }
 
