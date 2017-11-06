@@ -60,7 +60,7 @@ public class Ventana  extends JFrame implements ActionListener  {
         this.setBounds(0, 0, 800, 750); // tamaño de jframe
         this.setLayout(null);
         this.setResizable(false); // que el cliente no pueda cambiar el pañano al jframe 
-        this.getContentPane().add(panel);
+        this.getContentPane().add(panel);// Agrega Panel al JFrame
         this.menuBarra = new JMenuBar();
         this.menuBarra.setBounds(0, 0, 800, 25);
         this.menuBarra.setVisible(true);
@@ -118,7 +118,7 @@ public class Ventana  extends JFrame implements ActionListener  {
        
          }else if(e.getSource()==NuevoJuego){
           this.Nombre.setText(JOptionPane.showInputDialog("Cual es tu Nombre"));
-          
+          panel.setVisible(true);
          }
     }
  

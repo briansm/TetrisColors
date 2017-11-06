@@ -10,7 +10,7 @@ public class Panel  extends JPanel {
     
      this.setBounds(300, 25, 300, 650);
      this.setBackground(Color.red);
-     this.setVisible(true);
+     this.setVisible(false);
      
 }
 }
