@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -84,37 +85,23 @@ public class Ventana  extends JFrame implements ActionListener  {
     
     
     public Ventana(){
-     this.setBounds(0, 0, 800, 750); // tamaño de jframe
+        this.setBounds(0, 0, 800, 750); // tamaño de jframe
         this.setLayout(null);
-        this.setResizable(false); // que el cliente no pueda cambiar el pañano al jframe
-        
-        
-        
-        
-         
+        this.setResizable(false); // que el cliente no pueda cambiar el pañano al jframe 
         this.getContentPane().add(panel);
-        
-        
-        
-        
         this.menuBarra = new JMenuBar();
         this.menuBarra.setBounds(0, 0, 800, 25);
         this.menuBarra.setVisible(true);
-        
         this.Juego = new JMenu("Juego");
         this.Opciones = new JMenu("Opciones");
         this.Ayuda = new JMenu("Ayuda ");
-                
-        
         this.NuevoJuego = new JMenuItem("Nuevo Juego");
         this.Individual = new JMenuItem("Individual");
         this.Versus = new JMenuItem("Versus");
         this.Salir = new JMenuItem("Salir");
-        
         this.Pausa = new JMenuItem("Pausa");
         this.VerRecord = new JMenuItem("Ver Record");
         this.BorrarRecord = new JMenuItem("Borrar Record");
-        
         this.AcercaDelJuego = new JMenuItem("Acerca del Juego");
         this.ayuda = new JMenuItem("Ayuda");
         
@@ -131,19 +118,26 @@ public class Ventana  extends JFrame implements ActionListener  {
           menuBarra.add(Ayuda);
           Ayuda.add(AcercaDelJuego);
           Ayuda.add(ayuda);
-          
-          
-          
           this.add(menuBarra);
           
                 botones();
         
-    
+          AcercaDelJuego.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(e.getSource()==AcercaDelJuego){
+           try {
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+"Acerca de.pdf");
+                System.out.println("Funciona");
+            }catch (IOException eaaa) {
+                // TODO Auto-generated catch block
+                eaaa.printStackTrace();
+            }
+       
+       }
     }
  
 }
