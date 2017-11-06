@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tetriscolors;
 
 import javax.swing.JFrame;
-
+import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,19 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-/**
- *
- * @author Juan José
- */
+
 public class Ventana  extends JFrame implements ActionListener  {
-    Panel panel = new Panel();
-   
-    
-    
-    
-    
-    private JMenuBar menuBarra; // Variable tipo menuBar para Menú superior.
+   //---------------Declaracion de variables----------------- 
+            Panel panel = new Panel();
+            private JMenuBar menuBarra; // Variable tipo menuBar para Menú superior.
+            private JLabel Nombre;
             private JMenu Juego; // variables para los menus 
                     private JMenuItem NuevoJuego;
                     private JMenuItem Individual;
@@ -46,45 +37,26 @@ public class Ventana  extends JFrame implements ActionListener  {
                     private JMenuItem ayuda;
     
     
-    // variables de celdas
-                    
+            // variables de celdas
+                int filas=2;
+                int columnas=2;   
+                Boton[][] MatrizBotones = new Boton[filas][columnas];
     
-                    
-                    
-   
+    public void botones(){
       
-    int filas=2;
-    int columnas=2;   
-   Boton[][] MatrizBotones = new Boton[filas][columnas];
-      public void botones(){
-      
-        for (int fila = 0; fila<filas ; fila++) {
-              
+        for (int fila = 0; fila<filas ; fila++) {              
               for (int columna = 0; columna < columnas; columna++) {
-
-              MatrizBotones[fila][columna] = new Boton(columna,fila ,200,40);   
-              MatrizBotones[fila][columna].cambiarNombre(fila, columna);
-              panel.add(MatrizBotones[fila][columna]);
-              
-              
-              
+                 MatrizBotones[fila][columna] = new Boton(columna,fila ,200,40);   
+                 MatrizBotones[fila][columna].cambiarNombre(fila, columna);
+                 panel.add(MatrizBotones[fila][columna]);          
               }   
               
-          }
-        
-        
-        
+          }  
         
        }
       
-     
-      
-      
-      
-    
-    
-    
     public Ventana(){
+      //----------Crear objetos----------------------
         this.setBounds(0, 0, 800, 750); // tamaño de jframe
         this.setLayout(null);
         this.setResizable(false); // que el cliente no pueda cambiar el pañano al jframe 
@@ -104,8 +76,11 @@ public class Ventana  extends JFrame implements ActionListener  {
         this.BorrarRecord = new JMenuItem("Borrar Record");
         this.AcercaDelJuego = new JMenuItem("Acerca del Juego");
         this.ayuda = new JMenuItem("Ayuda");
-        
-        
+        this.Nombre=new JLabel();
+        this.Nombre.setBounds(100,100 ,50 ,50 );
+        this.Nombre.setVisible(true);
+        //----------Agregar Componentes----------
+          this.add(Nombre);
           menuBarra.add(Juego);
           Juego.add(NuevoJuego);
           Juego.add(Individual);
@@ -119,25 +94,32 @@ public class Ventana  extends JFrame implements ActionListener  {
           Ayuda.add(AcercaDelJuego);
           Ayuda.add(ayuda);
           this.add(menuBarra);
-          
-                botones();
-        
+         //----------------------------------------
+        //---------Metodos----------------------
+          botones();
+        //--------------------------------------------  
+        //------------Activar menus--------------
           AcercaDelJuego.addActionListener(this);
+          NuevoJuego.addActionListener(this);
+        //-------------------------------------------  
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       if(e.getSource()==AcercaDelJuego){
-           try {
+       //------Funciones del menu--------------
+         if(e.getSource()==AcercaDelJuego){
+           
+            try {
                 Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+"Acerca de.pdf");
                 System.out.println("Funciona");
             }catch (IOException eaaa) {
-                // TODO Auto-generated catch block
                 eaaa.printStackTrace();
             }
        
-       }
+         }else if(e.getSource()==NuevoJuego){
+          this.Nombre.setText(JOptionPane.showInputDialog("Cual es tu Nombre"));
+          
+         }
     }
  
 }

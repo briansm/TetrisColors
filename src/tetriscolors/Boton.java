@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tetriscolors;
 
 
@@ -17,10 +13,10 @@ import javax.swing.JButton;
  */
 public class Boton extends JButton implements ActionListener {
    
-    public Boton(int posx, int posy,int ancho,int alto){
- setBounds(posx,posy,ancho,alto);
-addActionListener(this);
-  
+  public Boton(int posx, int posy,int ancho,int alto){
+    setBounds(posx,posy,ancho,alto);
+    addActionListener(this);
+ 
   }  
 
   public void cambiarNombre(int x, int y){
