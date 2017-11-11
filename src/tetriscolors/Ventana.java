@@ -1,12 +1,15 @@
 
 package tetriscolors;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -20,6 +23,8 @@ public class Ventana  extends JFrame implements ActionListener  {
             Panel panel = new Panel();
             private JMenuBar menuBarra; // Variable tipo menuBar para Menú superior.
             private JLabel Nombre;
+            private JLabel Player1;
+            private JLabel cronometro;
             private JMenu Juego; // variables para los menus 
                     private JMenuItem NuevoJuego;
                     private JMenuItem Individual;
@@ -79,8 +84,16 @@ public class Ventana  extends JFrame implements ActionListener  {
         this.Nombre=new JLabel();
         this.Nombre.setBounds(100,100 ,50 ,50 );
         this.Nombre.setVisible(true);
+        //-------label cronometro-------
+        this.cronometro=new JLabel("00:00:00");
+        this.cronometro.setBounds(100, 150, 50, 25);
+        this.cronometro.setForeground(Color.blue);
+        this.cronometro.setBackground(Color.white);
+        this.cronometro.setOpaque(true);
+        this.cronometro.setVisible(false);
         //----------Agregar Componentes----------
           this.add(Nombre);
+          this.add(cronometro);
           menuBarra.add(Juego);
           Juego.add(NuevoJuego);
           Juego.add(Individual);
@@ -119,6 +132,9 @@ public class Ventana  extends JFrame implements ActionListener  {
          }else if(e.getSource()==NuevoJuego){
           this.Nombre.setText(JOptionPane.showInputDialog("Cual es tu Nombre"));
           panel.setVisible(true);
+          cronometro.setVisible(true);
+          
+          
          }
     }
  
